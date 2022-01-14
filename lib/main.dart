@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:personal_finance_app/pages/login.dart';
+import 'package:personal_finance_app/pages/login/login.dart';
 import 'package:personal_finance_app/router.dart';
 import 'package:personal_finance_app/state/Global.dart';
 
 Future main() async{
   await dotenv.load();
   await Global.init();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -40,6 +41,6 @@ class MyApp extends StatelessWidget {
     // if (token != null) {
     //   return LandingScreen();
     // }
-    return LoginScreen();
+    return const LoginScreen();
   }
 }
