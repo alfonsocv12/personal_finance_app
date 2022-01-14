@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:personal_finance_app/pages/login/login.dart';
 import 'package:personal_finance_app/router.dart';
-import 'package:personal_finance_app/state/Global.dart';
+import 'package:personal_finance_app/Global.dart';
 
 Future main() async{
   await dotenv.load();

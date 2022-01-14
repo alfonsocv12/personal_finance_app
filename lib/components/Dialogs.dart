@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Dialogs {
@@ -8,14 +7,14 @@ class Dialogs {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return new WillPopScope(
+        return WillPopScope(
           onWillPop: () async => false,
           child: SimpleDialog(
             key: key,
             backgroundColor: Colors.black54,
             children: <Widget>[
               Center(
-                child: Column(children: [
+                child: Column(children: const [
                   CircularProgressIndicator(),
                   SizedBox(height: 10,),
                   Text(
