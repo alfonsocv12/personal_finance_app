@@ -10,6 +10,6 @@ Widget getLandingWidget(cls, BuildContext context) {
         child: Text(Global.localStorage.getString('token')!),
       )
     ])),
-    bottomNavigationBar: navBar.getNavBar(cls, context, 1),
+    bottomNavigationBar: navBar.getNavBar(cls, context, 0),
   );
 }

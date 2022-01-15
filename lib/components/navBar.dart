@@ -5,7 +5,6 @@ import 'package:personal_finance_app/router.dart';
 class NavBar {
 
   late BuildContext _context;
-  dynamic cls;
 
   Map indexToRoute = {
     0: '/home',
@@ -13,14 +12,12 @@ class NavBar {
   };
 
   void _onTab(int tabIndex) {
-    debugPrint(tabIndex.toString());
-    // routerObject.pushRemove(
-    //   _context, indexToRoute[tabIndex], routeAnimations.noAnimation
-    // );
+    routerObject.pushRemove(
+      _context, indexToRoute[tabIndex], routeAnimations.noAnimation
+    );
   }
 
   Widget getNavBar(cls, context, tabIndex) {
-    this.cls = cls;
     _context = context;
 
     return BottomNavigationBar(items: const [

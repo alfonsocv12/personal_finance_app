@@ -8,18 +8,16 @@ class BasePage extends StatelessWidget {
   Widget build(BuildContext context) {
     _getCurrentRoute(context);
     return const Scaffold(
-      body: Center(
-        child: Icon(
-          Icons.add_to_photos_outlined
-        ),
-      ),
+      
     );
   }
 
   Future<void> _getCurrentRoute(BuildContext context) async {
-    routerObject.tokenMiddleWear(context);
-    Navigator.pushNamedAndRemoveUntil(
-      context, '/home', (route) => false
-    );
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      routerObject.tokenMiddleWear(context);
+      Navigator.pushNamedAndRemoveUntil(
+        context, '/home', (route) => false
+      );
+    });
   }
 }

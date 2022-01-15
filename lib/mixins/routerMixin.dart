@@ -11,10 +11,10 @@ class RouterMixin {
   Function _animationCallback = routeAnimations.noAnimation;
 
   void pushRemove(
-    BuildContext context, String routeName, navigationWidget
+    BuildContext context, String routeName, [animationWidget]
   ) {
     currentRoute = ModalRoute.of(context)!.settings.name!;
-    animationCallback = navigationWidget;
+    animationCallback = animationWidget;
     Navigator.pushNamedAndRemoveUntil(
       context, routeName, (route) => false
     );
@@ -29,7 +29,7 @@ class RouterMixin {
         settings: settings,
         pageBuilder: (context, __, ___) => route(context),
         transitionsBuilder: (context, animation, __, child)
-          => child
+          => currentAnimation(context, animation, __, child)
       );
     }
   }
@@ -40,8 +40,10 @@ class RouterMixin {
     return currentAnimation;
   }
 
-  set animationCallback(Function payload) {
-    _animationCallback = payload;
+  set animationCallback(Function? payload) {
+    if(payload != null) {
+      _animationCallback = payload;
+    }
   }
 
   void tokenMiddleWear(BuildContext context) {
