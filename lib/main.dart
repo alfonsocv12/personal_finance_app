@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:personal_finance_app/pages/landing/landing.dart';
-import 'package:personal_finance_app/router.dart';
+import 'package:personal_finance_app/pages/basePage.dart';
 import 'package:personal_finance_app/Global.dart';
+import 'package:personal_finance_app/router.dart';
 
 Future main() async{
   await dotenv.load();
@@ -22,13 +22,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
-      home: _getHome(context),
-      onGenerateRoute: (settings) => routerClass.build(settings)
+      home: const BasePage(),
+      onGenerateRoute: (settings) => routerObject.onGenerateRoute(settings)
     );
-  }
-
-  Widget _getHome(BuildContext context) {
-    // routerClass.tokenMiddleWear(context);
-    return const LandingScreen();
   }
 }

@@ -1,8 +1,6 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 
-class NavigateAnimations {
+class RouteAnimations {
 
   PageRouteBuilder _baseAnimation(settings, routeWidget, animationCallback) {
     return PageRouteBuilder(
@@ -41,3 +39,5 @@ class NavigateAnimations {
     );
   }
 }
+
+RouteAnimations routeAnimations = RouteAnimations();

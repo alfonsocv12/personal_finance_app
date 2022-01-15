@@ -6,7 +6,7 @@ class BasePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _selectRoute(context);
+    _getCurrentRoute(context);
     return const Scaffold(
       body: Center(
         child: Icon(
@@ -16,8 +16,10 @@ class BasePage extends StatelessWidget {
     );
   }
 
-  void _selectRoute(BuildContext context) {
-    routerClass.tokenMiddleWear(context);
-    
+  Future<void> _getCurrentRoute(BuildContext context) async {
+    routerObject.tokenMiddleWear(context);
+    Navigator.pushNamedAndRemoveUntil(
+      context, '/home', (route) => false
+    );
   }
 }

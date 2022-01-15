@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:personal_finance_app/Global.dart';
-import 'package:personal_finance_app/components/navBar.dart';
 import 'package:personal_finance_app/pages/landing/landingWidget.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -10,9 +9,6 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingState extends State<LandingScreen> {
-
-  int navBarIndex = 0;
-  NavBar navBar = NavBar();
 
   @override
   Widget build(BuildContext context) {

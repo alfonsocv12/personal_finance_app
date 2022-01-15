@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_finance_app/components/navBar.dart';
 import 'package:personal_finance_app/Global.dart';
 
 Widget getLandingWidget(cls, BuildContext context) {
@@ -9,6 +10,6 @@ Widget getLandingWidget(cls, BuildContext context) {
         child: Text(Global.localStorage.getString('token')!),
       )
     ])),
-    bottomNavigationBar: cls.navBar.getNavBar(cls, context),
+    bottomNavigationBar: navBar.getNavBar(cls, context, 1),
   );
 }
