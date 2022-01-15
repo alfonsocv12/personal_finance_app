@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personal_finance_app/theme/RouteAnimation.dart';
 import 'package:personal_finance_app/router.dart';
+import 'package:personal_finance_app/theme/baseTheme.dart';
 
 class NavBar {
 
@@ -20,17 +21,24 @@ class NavBar {
   Widget getNavBar(cls, context, tabIndex) {
     _context = context;
 
-    return BottomNavigationBar(items: const [
+    return BottomNavigationBar(
+      backgroundColor: BaseTheme.navBarBgLight,
+      unselectedItemColor: Colors.black,
+      items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home'
+          icon: Icon(Icons.home_outlined),
+          label: 'Home',
+          activeIcon: Icon(Icons.home_filled)
         ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings')
+          icon: Icon(Icons.settings_outlined),
+          label: 'Settings',
+          activeIcon: Icon(Icons.settings),
+          backgroundColor: Colors.red
+        )
       ],
       currentIndex: tabIndex,
-      selectedItemColor: Colors.amber[800],
+      selectedItemColor: Colors.black,
       onTap: _onTab,
     );
   }
