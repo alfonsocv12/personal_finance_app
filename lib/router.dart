@@ -3,28 +3,12 @@ import 'package:personal_finance_app/Global.dart';
 import 'package:personal_finance_app/pages/login/login.dart';
 import 'package:personal_finance_app/pages/settings/settings.dart';
 
-// class Router {
-//   void tokenMiddleWear(BuildContext context) {
-//     String? token = Global.localStorage.getString('token');
-//     if (token == null) {
-//       Navigator.pop(context);
-//       Navigator.pushReplacementNamed(context, '/auth');
-//     }
-//   }
-
-//   Map<String, Widget Function(BuildContext)> routes(context) {
-//     return {
-//       '/auth': (context) => const LoginScreen(),
-//       '/settings': (context) {
-//         tokenMiddleWear(context);
-//         return const SettingsScreen();
-//       }
-//     };
-//   }
-// }
-
 class FinalRouter {
   late String currentRoute;
+
+  void navigateAnimation() {
+    
+  }
 
   Route<dynamic>? build(settings) {
     if (settings.name != currentRoute) {
@@ -47,6 +31,14 @@ class FinalRouter {
           return child;
         }
       );
+    }
+  }
+
+  void tokenMiddleWear(BuildContext context) {
+    String? token = Global.localStorage.getString('token');
+    if (token == null) {
+      Navigator.pop(context);
+      Navigator.pushReplacementNamed(context, '/auth');
     }
   }
 
