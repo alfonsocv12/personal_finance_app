@@ -3,10 +3,10 @@ import 'package:personal_finance_app/Global.dart';
 import 'package:personal_finance_app/services/setUrl.dart';
 
 class SchoolService {
-  static Future getSchoolDebt() async {
+  static Future<http.Response> getSchoolDebt() async {
     String token = Global.localStorage.getString("token")!;
     return await http.get(
-      setUrl.getUri(''),
+      setUrl.getUri('/school_debt/overview/school_debt_database/Chato'),
       headers: {
         'Authorization': 'Bearer $token'
       }
