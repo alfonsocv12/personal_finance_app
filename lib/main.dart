@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:personal_finance_app/pages/login/login.dart';
+import 'package:personal_finance_app/pages/landing/landing.dart';
 import 'package:personal_finance_app/router.dart';
 import 'package:personal_finance_app/Global.dart';
 
@@ -19,28 +19,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Finance',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
-      routes: routes(context),
-      home: selectScreen(),
+      home: _getHome(context),
+      onGenerateRoute: (settings) => routerClass.build(settings)
     );
   }
 
-  Widget selectScreen() {
-    // var token = Global.localStorage!.getString('token');
-    // if (token != null) {
-    //   return LandingScreen();
-    // }
-    return const LoginScreen();
+  Widget _getHome(BuildContext context) {
+    // routerClass.tokenMiddleWear(context);
+    return const LandingScreen();
   }
 }

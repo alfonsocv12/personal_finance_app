@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:personal_finance_app/Global.dart';
 import 'package:personal_finance_app/pages/login/loginForm/loginForm.dart';
 import 'package:personal_finance_app/services/auth.dart';
+import 'package:personal_finance_app/components/Dialogs.dart';
 import 'loginWidget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,6 +18,7 @@ class _LoginState extends State<LoginScreen> {
 
   bool login = true;
   final LoginForm _loginForm = LoginForm();
+  late BuildContext context;
 
   @override
   void dispose() {
@@ -31,6 +33,7 @@ class _LoginState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    this.context = context;
     return getLoginWidget(
       this, context, selectForm(context)
     );
@@ -45,20 +48,23 @@ class _LoginState extends State<LoginScreen> {
   }
 
   void loginPressed() async {
+    Dialogs.showLoadingDialog(context, GlobalKey<State>());
     StreamedResponse streamedResponse = await AuthService.login(
       _loginForm.signInTexts['email']!.text,
       _loginForm.signInTexts['password']!.text
     );
+    Navigator.of(context).pop();
 
+    var resp = json.decode(await streamedResponse.stream.bytesToString());
     if(streamedResponse.statusCode == 200) {
-      var resp = json.decode(
-        await streamedResponse.stream.bytesToString()
-      );
-
       Global.localStorage.setString('token', resp['access_token']);
       Global.localStorage.setString('exp', resp['exp']);
     } else {
-
+      Dialogs.showAlertDialog(
+        context,
+        'Auth error ${streamedResponse.statusCode}',
+        resp['detail'].toString()
+      );
     }
   }
 

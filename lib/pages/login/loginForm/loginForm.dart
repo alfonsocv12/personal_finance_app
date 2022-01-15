@@ -4,8 +4,8 @@ import 'package:personal_finance_app/theme/buttons.dart';
 class LoginForm{
 
   final Map<String, TextEditingController> signInTexts = {
-    'email': TextEditingController(),
-    'password': TextEditingController()
+    'email': TextEditingController(text: ''),
+    'password': TextEditingController(text: '')
   };
 
   void dispose() {
