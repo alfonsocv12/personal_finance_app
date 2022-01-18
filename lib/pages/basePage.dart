@@ -14,10 +14,9 @@ class BasePage extends StatelessWidget {
 
   Future<void> _getCurrentRoute(BuildContext context) async {
     WidgetsBinding.instance!.addPostFrameCallback((_) {
-      routerObject.tokenMiddleWear(context);
-      Navigator.pushNamedAndRemoveUntil(
-        context, '/home', (route) => false
-      );
+      if (routerObject.tokenMiddleWear(context)) {
+        routerObject.pushRemove(context, '/home');
+      }
     });
   }
 }

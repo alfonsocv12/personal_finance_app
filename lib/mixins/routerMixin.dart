@@ -21,6 +21,7 @@ class RouterMixin {
   }
 
   Route<dynamic>? onGenerateRoute(settings) {
+    debugPrint('onGenerateRoute');
     if (currentRoute == null || settings.name != currentRoute) {
       Function route = _routes[settings.name];
       Function currentAnimation = animationCallback;
@@ -46,12 +47,15 @@ class RouterMixin {
     }
   }
 
-  void tokenMiddleWear(BuildContext context) {
+  bool tokenMiddleWear(BuildContext context) {
     String? token = Global.localStorage.getString('token');
     if (token == null) {
-      Navigator.pop(context);
-      Navigator.pushReplacementNamed(context, '/auth');
+      pushRemove(
+        context, '/auth'
+      );
+      return false;
     }
+    return true;
   }
 
   void add(key, value) {

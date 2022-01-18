@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:personal_finance_app/Global.dart';
 import 'package:personal_finance_app/pages/login/loginForm/loginForm.dart';
+import 'package:personal_finance_app/router.dart';
 import 'package:personal_finance_app/services/auth.dart';
 import 'package:personal_finance_app/components/Dialogs.dart';
 import 'loginWidget.dart';
@@ -59,6 +60,7 @@ class _LoginState extends State<LoginScreen> {
     if(streamedResponse.statusCode == 200) {
       Global.localStorage.setString('token', resp['access_token']);
       Global.localStorage.setString('exp', resp['exp']);
+      routerObject.pushRemove(context, '/home');
     } else {
       Dialogs.showAlertDialog(
         context,
