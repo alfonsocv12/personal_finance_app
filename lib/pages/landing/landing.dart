@@ -23,39 +23,34 @@ class _LandingState extends State<LandingScreen> with TickerProviderStateMixin {
   late AnimationController controller;
 
   @override
-  void initState() async {
+  void initState() {
+    _checkIfToken();
+    _getDebtData();
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 280),
     )..addListener(() {
         setState(() {});
       });
     controller.repeat(reverse: true);
-    await _getDebtData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _checkIfToken();
     return getLandingWidget(this, context);
   }
 
   Future<void> _getDebtData() async {
+    debugPrint('here');
     if (schoolDebtState.schoolDebt == null) {
       debugPrint('here');
       Response resp = await SchoolService.getSchoolDebt();
       // var resp = DebugClass();
       if (resp.statusCode == 200) {
-        schoolDebtState.schoolDebt = SchoolDebtDashboard(
-          amountToPay: 'Example',
-          amountPaid: 'Exmaple',
-          nextPaymentPay: 'Example',
-          total: 'example'
+        schoolDebtState.schoolDebt = schoolDebtDashboard(
+          json.decode(resp.body.toString())
         );
-        // schoolDebtState.schoolDebt = schoolDebtDashboard(
-        //   json.decode(resp.body.toString())
-        // );
       }
     }
   }
