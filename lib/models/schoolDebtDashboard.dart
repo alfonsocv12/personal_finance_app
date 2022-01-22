@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class SchoolDebtDashboard  {
   String amountToPay;
   String amountPaid;
@@ -12,6 +10,15 @@ class SchoolDebtDashboard  {
     required this.nextPaymentPay,
     required this.total
   });
+
+  String? getProp(String key) {
+    return {
+      'amountToPay': amountToPay,
+      'amountPaid': amountPaid,
+      'nextPaymentPay': nextPaymentPay,
+      'total': total
+    }[key];
+  }
 }
 
 schoolDebtDashboard(dynamic payload) {

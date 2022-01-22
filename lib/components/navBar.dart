@@ -21,25 +21,33 @@ class NavBar {
   Widget getNavBar(cls, context, tabIndex) {
     _context = context;
 
-    return BottomNavigationBar(
-      backgroundColor: BaseTheme.navBarBgLight,
-      unselectedItemColor: Colors.black,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          label: 'Home',
-          activeIcon: Icon(Icons.home_filled)
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings_outlined),
-          label: 'Settings',
-          activeIcon: Icon(Icons.settings),
-          backgroundColor: Colors.red
-        )
-      ],
-      currentIndex: tabIndex,
-      selectedItemColor: Colors.black,
-      onTap: _onTab,
+    return Container(
+      decoration: const BoxDecoration(
+        boxShadow:  [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 2
+          )
+        ]
+      ),
+      child: BottomNavigationBar(
+        unselectedItemColor: Colors.black,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+            activeIcon: Icon(Icons.home_filled)
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings_outlined),
+            label: 'Settings',
+            activeIcon: Icon(Icons.settings),
+          )
+        ],
+        currentIndex: tabIndex,
+        selectedItemColor: Colors.blueGrey.shade500,
+        onTap: _onTab,
+      ),
     );
   }
 }

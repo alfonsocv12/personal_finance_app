@@ -7,9 +7,10 @@ class BaseTheme {
   static Color secundaryColor = Colors.blueGrey.shade400;
   static Color primaryColorText = Colors.white;
 
+  static Color cardBgPink = Colors.orange.shade400;
   static Color cardBgLight = Colors.blueGrey.shade100;
 
-  static Color navBarBgLight = Colors.blueGrey.shade100;
+  static Color navBarBgLight = Colors.blueGrey.shade800;
 
   Color? operator[](attribute) {
     Color?  response;
