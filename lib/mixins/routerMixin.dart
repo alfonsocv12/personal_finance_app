@@ -21,7 +21,6 @@ class RouterMixin {
   }
 
   Route<dynamic>? onGenerateRoute(settings) {
-    debugPrint('onGenerateRoute');
     if (currentRoute == null || settings.name != currentRoute) {
       Function route = _routes[settings.name];
       Function currentAnimation = animationCallback;
