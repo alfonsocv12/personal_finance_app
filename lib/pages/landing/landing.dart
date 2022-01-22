@@ -18,21 +18,12 @@ class LandingScreen extends StatefulWidget {
   @override State<StatefulWidget> createState() => _LandingState();
 }
 
-class _LandingState extends State<LandingScreen> with TickerProviderStateMixin {
-
-  late AnimationController controller;
+class _LandingState extends State<LandingScreen> {
 
   @override
   void initState() {
     _checkIfToken();
     _getDebtData();
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 280),
-    )..addListener(() {
-        setState(() {});
-      });
-    controller.repeat(reverse: true);
     super.initState();
   }
 
@@ -42,15 +33,13 @@ class _LandingState extends State<LandingScreen> with TickerProviderStateMixin {
   }
 
   Future<void> _getDebtData() async {
-    debugPrint('here');
     if (schoolDebtState.schoolDebt == null) {
-      debugPrint('here');
       Response resp = await SchoolService.getSchoolDebt();
-      // var resp = DebugClass();
       if (resp.statusCode == 200) {
-        schoolDebtState.schoolDebt = schoolDebtDashboard(
-          json.decode(resp.body.toString())
-        );
+        setState(() {
+          schoolDebtState.schoolDebt =
+              schoolDebtDashboard(json.decode(resp.body.toString()));
+        });
       }
     }
   }

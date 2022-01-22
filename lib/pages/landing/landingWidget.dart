@@ -73,7 +73,7 @@ Widget getSchoolDebtWidget(cls) {
   return Center(
     child: Padding(
       padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-      child: spinningLoader(cls.controller),
+      child: spinningLoader,
     ),
   );
 }
