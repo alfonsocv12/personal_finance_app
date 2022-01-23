@@ -84,9 +84,12 @@ Widget getLandingWidget(cls, BuildContext context) {
                 borderRadius: BorderRadius.circular(20.0)
               ),
               color: BaseTheme.cardBgPink,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: getSchoolDebtWidget(cls)
+              child: InkWell(
+                onTap: () => cls.debtCardOntab(context),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  child: getSchoolDebtWidget(cls)
+                ),
               )
             )
           ),

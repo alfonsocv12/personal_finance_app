@@ -50,4 +50,8 @@ class _LandingState extends State<LandingScreen> {
       Navigator.pushReplacementNamed(context, '/auth');
     }
   }
+
+  void debtCardOntab(BuildContext context) {
+    debugPrint('ontap');
+  }
 }
