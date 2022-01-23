@@ -20,9 +20,9 @@ class NavBar {
 
   Widget selectedIconElipse({required Icon icon}) {
     return Container(
-      width: 60,
+      width: 65,
       decoration: BoxDecoration(
-        color: Colors.blueGrey.shade300,
+        color: Colors.blue.shade100,
         borderRadius: BorderRadius.circular(20)
       ),
       child: Padding(
@@ -36,11 +36,11 @@ class NavBar {
     _context = context;
 
     return BottomNavigationBar(
-      backgroundColor: Colors.blueGrey.shade100,
+      backgroundColor: Colors.blue.shade50,
       unselectedItemColor: Colors.black,
       selectedItemColor: Colors.black,
-      selectedFontSize: 14,
-      unselectedFontSize: 14,
+      selectedFontSize: 15,
+      unselectedFontSize: 15,
       currentIndex: tabIndex,
       onTap: _onTab,
       items: [
