@@ -31,18 +31,17 @@ Widget getColumn(String title, String data) {
   );
 }
 
-
 Widget getSchoolDebtWidget(cls) {
-  SchoolDebtDashboard? schoolDebt = schoolDebtState.schoolDebt;
+  var schoolDebt = schoolDebtState.schoolDebt;
   if (schoolDebt != null) {
     List<Map<String, String>> columns = [
       {
         'text': 'next month',
-        'objectKey': 'nextPaymentPay'
+        'objectKey': 'date'
       },
       {
         'text': 'amount',
-        'objectKey': 'amountToPay'
+        'objectKey': 'amount'
       }
     ];
     return Row(
@@ -50,7 +49,7 @@ Widget getSchoolDebtWidget(cls) {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         for(Map column in columns)
-          getColumn(column['text'], schoolDebt.getProp(column['objectKey'])!)
+          getColumn(column['text'], schoolDebt[column['objectKey']]!)
       ],
     );
   }

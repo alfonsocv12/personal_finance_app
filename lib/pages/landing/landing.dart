@@ -37,8 +37,7 @@ class _LandingState extends State<LandingScreen> {
       Response resp = await SchoolService.getSchoolDebt();
       if (resp.statusCode == 200) {
         setState(() {
-          schoolDebtState.schoolDebt =
-              schoolDebtDashboard(json.decode(resp.body.toString()));
+          schoolDebtState.schoolDebt = json.decode(resp.body.toString());
         });
       }
     }

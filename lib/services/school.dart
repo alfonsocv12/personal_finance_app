@@ -6,7 +6,7 @@ class SchoolService {
   static Future<http.Response> getSchoolDebt() async {
     String token = Global.localStorage.getString("token")!;
     return await http.get(
-      setUrl.getUri('/school_debt/overview/school_debt_database/Chato'),
+      setUrl.getUri('/school_debt/next_payment'),
       headers: {
         'Authorization': 'Bearer $token'
       }
