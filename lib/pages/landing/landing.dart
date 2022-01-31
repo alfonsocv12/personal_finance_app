@@ -52,5 +52,8 @@ class _LandingState extends State<LandingScreen> {
 
   void debtCardOntab(BuildContext context) {
     Clipboard.setData(ClipboardData(text: schoolDebtState.schoolDebt!['amount']));
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text("Amount copy to clipboard"),
+    ));
   }
 }
