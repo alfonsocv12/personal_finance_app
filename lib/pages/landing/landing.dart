@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:personal_finance_app/Global.dart';
-import 'package:personal_finance_app/models/schoolDebtDashboard.dart';
 import 'package:personal_finance_app/pages/landing/landingWidget.dart';
 import 'package:personal_finance_app/services/school.dart';
 import 'package:personal_finance_app/state/schoolDebt.dart';
@@ -51,6 +51,6 @@ class _LandingState extends State<LandingScreen> {
   }
 
   void debtCardOntab(BuildContext context) {
-    debugPrint('ontap');
+    Clipboard.setData(ClipboardData(text: schoolDebtState.schoolDebt!['amount']));
   }
 }
