@@ -10,8 +10,6 @@ import 'package:personal_finance_app/services/school.dart';
 import 'package:personal_finance_app/state/schoolDebt.dart';
 
 import 'package:device_apps/device_apps.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:android_intent_plus/android_intent.dart';
 
 class DebugClass {
   int statusCode = 200;
